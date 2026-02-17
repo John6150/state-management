@@ -30,6 +30,10 @@ class MyApp extends StatelessWidget {
   }
 }
 
+// void doSomething({required WidgetRef ref}){
+//   ref.watch(provider);
+// }
+
 class MyHomePage extends ConsumerStatefulWidget {
   const MyHomePage({super.key, required this.title});
   final String title;
@@ -37,6 +41,9 @@ class MyHomePage extends ConsumerStatefulWidget {
   @override
   ConsumerState<MyHomePage> createState() => _MyHomePageState();
 }
+
+// WidgetRef
+// Ref 
 
 // int x = 0;
 

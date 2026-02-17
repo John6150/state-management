@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_riverpod/legacy.dart';
 import 'package:state_management/main.dart';
 
 class NewRoute extends StatefulWidget {
@@ -38,6 +39,10 @@ class _NewRouteState extends State<NewRoute> {
       floatingActionButton: Consumer(
         builder: (context, ref, child) => FloatingActionButton(
           onPressed: () {
+            ref.watch(profileVMProvider).checkState;
+            ref.read(profileVMProvider).setState = 'Hello Lagos';
+            ref.watch(profileVMProvider).checkState;
+
             // ref.read(x.notifier).state++;
             // setState(() {
             //   // x += 1;
@@ -51,3 +56,14 @@ class _NewRouteState extends State<NewRoute> {
     );
   }
 }
+
+class ProfileNotifier extends StateNotifier<String> {
+  ProfileNotifier() : super('Hello world');
+
+  void get checkState => print(state);
+  set setState(String text) => state = text;
+}
+
+final profileVMProvider = Provider<ProfileNotifier>((ref) {
+  return ProfileNotifier();
+});
